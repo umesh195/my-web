@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Manager</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1 class="title">
+                <i class="fas fa-tasks"></i>
+                Task Manager
+            </h1>
+            <div class="task-counter">
+                <span id="taskCount">0</span> tasks
+            </div>
+        </header>
+
+        <main class="main-content">
+            <!-- Task Input Form -->
+            <section class="task-input-section">
+                <form id="taskForm" class="task-form">
+                    <div class="input-group">
+                        <input 
+                            type="text" 
+                            id="taskInput" 
+                            class="task-input" 
+                            placeholder="Add a new task..."
+                            required
+                            autocomplete="off"
+                        >
+                        <button type="submit" class="add-btn">
+                            <i class="fas fa-plus"></i>
+                            Add Task
+                        </button>
+                    </div>
+                    <div class="error-message" id="errorMessage"></div>
+                </form>
+            </section>
+
+            <!-- Search and Filter Controls -->
+            <section class="controls-section">
+                <div class="search-container">
+                    <i class="fas fa-search search-icon"></i>
+                    <input 
+                        type="text" 
+                        id="searchInput" 
+                        class="search-input" 
+                        placeholder="Search tasks..."
+                        autocomplete="off"
+                    >
+                </div>
+                
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-filter="all">
+                        <i class="fas fa-list"></i>
+                        All
+                    </button>
+                    <button class="filter-btn" data-filter="active">
+                        <i class="fas fa-clock"></i>
+                        Active
+                    </button>
+                    <button class="filter-btn" data-filter="completed">
+                        <i class="fas fa-check-circle"></i>
+                        Completed
+                    </button>
+                </div>
+            </section>
+
+            <!-- Task List -->
+            <section class="task-list-section">
+                <div class="task-list-header">
+                    <h2>Your Tasks</h2>
+                    <button id="clearCompleted" class="clear-btn">
+                        <i class="fas fa-trash"></i>
+                        Clear Completed
+                    </button>
+                </div>
+                
+                <ul id="taskList" class="task-list"></ul>
+                
+                <div id="emptyState" class="empty-state">
+                    <i class="fas fa-clipboard-list"></i>
+                    <h3>No tasks yet</h3>
+                    <p>Add your first task to get started!</p>
+                </div>
+                
+                <div id="noResults" class="no-results">
+                    <i class="fas fa-search"></i>
+                    <h3>No matching tasks</h3>
+                    <p>Try adjusting your search or filter criteria</p>
+                </div>
+            </section>
+        </main>
+
+        <!-- Edit Modal -->
+        <div id="editModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Edit Task</h3>
+                    <button class="close-btn" id="closeModal">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <form id="editForm" class="edit-form">
+                    <input 
+                        type="text" 
+                        id="editTaskInput" 
+                        class="edit-input" 
+                        required
+                        autocomplete="off"
+                    >
+                    <div class="modal-actions">
+                        <button type="button" class="cancel-btn" id="cancelEdit">
+                            Cancel
+                        </button>
+                        <button type="submit" class="save-btn">
+                            <i class="fas fa-save"></i>
+                            Save Changes
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
